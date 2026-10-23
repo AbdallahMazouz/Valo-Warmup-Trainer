@@ -1,71 +1,103 @@
-# Valo Warmup Trainer
+# Valo Warmup Trainer — Professional Web-Based 3D Aim Trainer
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)
-![Pygame](https://img.shields.io/badge/Pygame-2.6-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)
+![Three.js](https://img.shields.io/badge/Three.js-0.170-black?logo=three.js)
+![Vite](https://img.shields.io/badge/Vite-6.0-purple?logo=vite)
+![Vitest](https://img.shields.io/badge/Vitest-2.1-green?logo=vitest)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
-**A standalone FPS aim-training game built for VALORANT players.**  
-Flick. Track. React. Dominate.
+**A high-performance, browser-based 3D first-person aim trainer engineered specifically for tactical shooter and VALORANT players.**  
+*Inspired by iShotU Aim, Aimlabs, and KovaaK's.*
+
+[Live Demo](https://abdallahmazouz.github.io/valo-warmup-trainer/) &bull; [Features](#features) &bull; [Scenarios](#training-scenarios) &bull; [Quick Start](#quick-start) &bull; [Architecture](#architecture)
 
 </div>
 
 ---
 
+## Overview
+
+**Valo Warmup Trainer** is a zero-install, client-side 3D aim-training web application. Built with modern TypeScript, WebGL (Three.js), and the browser Pointer Lock API, it delivers low-latency mouse aiming with zero input smoothing and accurate ballistic hit registration.
+
+The trainer is tailored around authentic tactical FPS mechanics:
+- **True First-Person 3D Arena** with realistic target depth and collision geometry.
+- **Valorant Movement Accuracy (Counter-Strafing)**: Moving while firing penalizes your shots; players must master ADAD counter-strafing to shoot accurately.
+- **Head-Level Crosshair Discipline**: Slicing angles at head elevation with dedicated headshot multipliers.
+- **Dynamic Tactical Situations**: Wide swings, shoulder/jiggle peeks, angle clearing, and clutch duels.
+- **Flash Avoidance & Recovery**: Pop flashes detonate in real-time; players turn away (>75°) to dodge blinding effects or recover quickly for duels.
+- **Procedural Synthesizer Audio**: Responsive hit pings, headshot bells, and miss cues without external media dependencies.
+- **Full Local Persistence**: Settings, personal bests, and session history stored in `localStorage`.
+
+---
+
 ## Features
 
-### 10 Training Scenarios
-| Scenario | Focus |
-|---|---|
-| **Flick Training** | Pure flick speed across the screen |
-| **Smooth Tracking** | Hold crosshair on a wandering target |
-| **Target Switching** | Rapid multi-target sequence elimination |
-| **Micro-Adjustments** | Sub-pixel precision corrections |
-| **Wide Swing** | Extreme angle flicks left/right |
-| **Jiggle Peek** | Anticipate and shoot peeking targets |
-| **Angle Clearing** | Fast pre-aim at map-inspired angles |
-| **Reaction Time** | Flash dodge + immediate elimination |
-| **Counter-Strafe** | Strafing targets + stillness zone |
-| **Tactical Combo** | Full warm-up rotation of all modes |
+### 1. Training Scenarios
+- **Flick Training**: Static Flicks, Micro Flicks, Wide Flicks, Multi-Target Flicks, Precision Flicks, Reactive Flicks.
+- **Smooth & Reactive Tracking**: Wander tracking, fast direction shifts, ADAD strafing tracking, vertical recoil/updraft tracking.
+- **VALORANT Tactical Duels**: Wide-swing corner peeks, jiggle-peek timing, angle clearing, first-shot trigger discipline, counter-strafing dead-zone practice.
+- **Flash Simulation & Recovery**: Real-time blinding flash simulation with camera turn-away angle detection and post-flash target acquisition.
+- **Reaction Time Tests**: Stimulus-to-click visual reaction latency, peripheral vision snap tests.
+- **Hybrid Scenarios**: Tactical combo exercises and 1v3 clutch simulation.
 
-### Quality of Life
-- 🎯 **4 difficulty levels** — Easy / Medium / Hard / Valorant Pro
-- 📊 **Session statistics** — Score, accuracy, hits/misses, avg reaction time
-- 🏆 **Personal bests** tracked per scenario × difficulty
-- ⚙️ **Configurable controls** — sensitivity, FOV, crosshair, FPS cap
-- 🔊 **Procedural audio feedback** — hit pings, miss thuds, flash sounds
-- 🖥️ **Resizable window + F11 fullscreen**
-- 💾 **Persistent saves** in `%APPDATA%/ValoWarmupTrainer/`
+### 2. Structured Warm-Up Routines
+- **5-Minute Quick Warm-Up**: Essential wrist conditioning and head-level alignment before entering competitive queue.
+- **10-Minute Standard Routine**: Comprehensive warm-up covering flicks, micro-adjustments, strafe tracking, and counter-strafing.
+- **20-Minute Pro Conditioning**: Tournament-grade endurance routine with precision flicking, reactive tracking, and high-pressure clutch duels.
+
+### 3. Esports Interface & Customization
+- **Full Mouse Sensitivity Calibration**: Scaled to Valorant in-game sensitivity (e.g., 0.35 @ 800 DPI).
+- **Horizontal Field of View (FOV)**: Configurable from 70° to 120° (defaults to Valorant standard 103°).
+- **Interactive Crosshair Customizer**: Custom color presets (Green, Cyan, Yellow, White, Red), size, thickness, inner gap, and center dot with live preview.
+- **Detailed Session Analytics**: Accuracy, hits, misses, headshot count, targets/second, average and median reaction time.
+- **Personal Best Tracking**: Automatically tracks records per scenario with celebration alerts.
 
 ---
 
 ## Quick Start
 
-### Requirements
-- Python 3.11+
-- Windows / Linux / macOS
+### Prerequisites
+- [Node.js](https://nodejs.org/) v18+ and `npm`
 
-### Install & Run
-
+### Local Development
 ```bash
+# Clone the standalone repository
 git clone https://github.com/AbdallahMazouz/valo-warmup-trainer.git
 cd valo-warmup-trainer
-pip install -r requirements.txt
-python main.py
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
+Open [http://localhost:5173/valo-warmup-trainer/](http://localhost:5173/valo-warmup-trainer/) in your browser.
+
+### Run Tests
+```bash
+npm run test
+```
+
+### Production Build
+```bash
+npm run build
+```
+Production assets are generated in `dist/`.
 
 ---
 
 ## Controls
 
-| Input | Action |
+| Action | Control |
 |---|---|
-| **Mouse** | Aim |
-| **Left Click** | Shoot target |
-| **ESC** | End session / Back |
-| **F11** | Toggle fullscreen |
+| **Aim / Look** | Mouse (Pointer Lock) |
+| **Fire / Click** | Left Mouse Button |
+| **Movement** | `W`, `A`, `S`, `D` |
+| **Jump** | `Space` |
+| **Pause / Release Mouse** | `ESC` |
+| **Fullscreen** | `F11` (or browser default) |
 
 ---
 
@@ -73,85 +105,58 @@ python main.py
 
 ```
 valo-warmup-trainer/
-├── main.py              # Entry point
-├── requirements.txt
-├── build_exe.py         # PyInstaller build script
+├── index.html                  # HTML entry point with canvas and UI shell
+├── package.json                # Project dependencies and npm scripts
+├── tsconfig.json               # Strict TypeScript configuration
+├── vite.config.ts              # Vite bundler and Vitest configuration
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions deployment to GitHub Pages
 ├── src/
-│   ├── app.py           # Application + game loop
-│   ├── screens.py       # Menu / Game / Results / Settings / Profile
-│   ├── scenarios.py     # All 10 training scenarios
-│   ├── target.py        # Target entity with movement modes
-│   ├── ui.py            # Drawing helpers (buttons, bars, crosshair…)
-│   ├── audio.py         # Procedural audio (no external files needed)
-│   ├── settings.py      # Persistent settings (JSON)
-│   ├── stats.py         # Session history and personal bests (JSON)
-│   └── constants.py     # Global constants and config
-├── tests/
-│   └── test_game.py     # pytest unit tests
-└── assets/              # Icons and future art assets
+│   ├── main.ts                 # Bootstrap and application loop
+│   ├── constants.ts            # Physics, scoring, and engine constants
+│   ├── types.ts                # TypeScript interfaces & types
+│   ├── renderer.ts             # Three.js scene, arena geometry, lighting
+│   ├── controls.ts             # Pointer lock camera and movement physics
+│   ├── targetManager.ts        # Target spawning, movement patterns, hit detection
+│   ├── scenarios.ts            # Complete scenario catalog and warm-up plans
+│   ├── engine.ts               # Scenario simulation loop, scoring, timers
+│   ├── audio.ts                # Web Audio API procedural sound effects
+│   ├── settings.ts             # Persistent settings manager
+│   ├── store.ts                # Session history & personal bests manager
+│   ├── ui.ts                   # Esports UI, HUD, page routing, results modal
+│   └── style.css               # Dark theme esports CSS styles
+└── tests/
+    └── game.test.ts            # Unit tests for scoring, scenarios, settings & store
 ```
 
 ---
 
-## Running Tests
+## Deployment to GitHub Pages
 
-```bash
-pip install pytest
-python -m pytest tests/ -v
-```
-
----
-
-## Building a Standalone Executable
-
-```bash
-pip install pyinstaller
-python build_exe.py
-# Output: dist/ValoWarmupTrainer/ValoWarmupTrainer.exe
-```
+This project is configured for automated CI/CD deployment via GitHub Actions:
+1. Ensure the repository has GitHub Pages enabled under **Settings > Pages > Source > GitHub Actions**.
+2. Push commits to the `main` branch.
+3. The workflow builds the production bundle, runs tests, and deploys to:
+   `https://abdallahmazouz.github.io/valo-warmup-trainer/`
 
 ---
 
-## Settings
+## Critical Project Isolation Notice
 
-All settings are stored in `%APPDATA%/ValoWarmupTrainer/settings.json` and persist between sessions.
-
-| Setting | Default | Range |
-|---|---|---|
-| Sensitivity | 0.12 | 0.01 – 2.0 |
-| FOV | 103° | 60° – 120° |
-| FPS Cap | 165 | 30 – 360 |
-| Volume | 0.7 | 0.0 – 1.0 |
-| Crosshair Size | 8 | 4 – 20 |
-| Crosshair Gap | 4 | 0 – 12 |
-| Crosshair Thickness | 2 | 1 – 6 |
+This project is an **independent, standalone product** and is completely decoupled from any other repositories:
+- Local Folder: `Valo-Warmup-Trainer`
+- Dedicated Remote: `https://github.com/AbdallahMazouz/valo-warmup-trainer`
+- No shared Git history, branches, or files with `First-Game-Project`.
 
 ---
 
-## Changelog
+## Fair Play & Security Disclaimer
 
-### v1.0.0 (2026-10-23)
-- Initial release
-- 10 training scenarios fully implemented
-- Session stats, personal bests, profile screen
-- Settings screen with live crosshair preview
-- Procedural audio engine (no external sound files)
-- Animated menu background
-- Full pytest test suite
-
----
-
-## Important
-
-> **This game does NOT interact with the VALORANT client.**  
-> All training is 100% standalone. No memory reading, no injection, no automation.
+This is a **standalone web trainer**. It operates entirely within the web browser and **does not interact with, read memory from, inject code into, or modify the live VALORANT game client**. No account details or Riot Games credentials are required.
 
 ---
 
 ## License
 
-MIT — See [LICENSE](LICENSE) for details.
-
----
-
-*Built for the community. Not affiliated with Riot Games.*
+MIT &copy; 2026 Abdallah Mazouz. See [LICENSE](LICENSE) for details.
