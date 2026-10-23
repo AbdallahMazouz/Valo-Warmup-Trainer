@@ -1,0 +1,5 @@
+pygame>=2.6.0
+moderngl>=5.10.0
+pyglm>=2.7.0
+numpy>=1.26.0
+pytest>=8.0.0

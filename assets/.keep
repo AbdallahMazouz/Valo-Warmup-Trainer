@@ -1,0 +1,7 @@
+# Place game assets here.
+#
+# assets/icon.ico  — Window icon (optional, needed for EXE build)
+#
+# The game runs with no external assets; all visuals are drawn
+# procedurally. Add custom fonts, sounds, or sprites here as the
+# project grows.
