@@ -9,7 +9,12 @@ export class AudioManager {
 
   init(): void {
     try {
-      this.ctx = new AudioContext();
+      if (!this.ctx) {
+        this.ctx = new AudioContext();
+      }
+      if (this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
       this.ready = true;
     } catch {
       console.warn('[Audio] AudioContext not available');
